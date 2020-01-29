@@ -26,6 +26,8 @@
                 float: left;
                 height: 100%;
                 background-color: burlywood;
+                overflow: auto;
+                position: fixed;
             }
             .right {
                 height: 100%;
@@ -39,12 +41,42 @@
             href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/androidstudio.min.css"
         />
         <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
-        <!-- <script>
-      hljs.initHighlightingOnLoad();
-    </script> -->
+
+        <link rel="stylesheet" href="html/zTreeStyle.css" />
+        <style>
+            body {
+                background-color: white;
+                margin: 0;
+                padding: 0;
+                text-align: left;
+            }
+            div,
+            p,
+            table,
+            th,
+            td {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                color: #333;
+                font-size: 12px;
+                font-family: dotum, Verdana, Arial, Helvetica, AppleGothic,
+                    sans-serif;
+            }
+            .ztree li a.curSelectedNode {
+                padding-top: 0px;
+                background-color: #ffe6b0;
+                color: black;
+                height: 16px;
+                border: 1px #ffb951 solid;
+                opacity: 0.8;
+            }
+        </style>
 
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
         <script src="https://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+        <script src="html/jquery.ztree.core-3.5.min.js"></script>
+        <script src="html/ztree_toc.js"></script>
     </head>
     <body>
         <div class="container">
@@ -63,34 +95,53 @@
                     摘要/Ubuntu开机启动.md</a
                 ><br />
             </div>
-            <div id="content" class="right"></div>
+            <div class="right">
+                <table border="0" height="600px" align="left">
+                    <tr>
+                        <td
+                            width="260px"
+                            align="left"
+                            valign="top"
+                            style="BORDER-RIGHT: #999999 1px dashed"
+                        >
+                            <ul id="tree" class="ztree"></ul>
+                        </td>
+                        <td width="770px" align="left" valign="top">
+                            <div id="content" class="first_part"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
         <script>
-            marked.setOptions({
-                renderer: new marked.Renderer(),
-                gfm: true,
-                tables: true,
-                breaks: false,
-                pedantic: false,
-                sanitize: false,
-                smartLists: true,
-                smartypants: false,
-                highlight: function(code) {
-                    return hljs.highlightAuto(code).value;
+            $(function() {
+                marked.setOptions({
+                    renderer: new marked.Renderer(),
+                    gfm: true,
+                    tables: true,
+                    breaks: false,
+                    pedantic: false,
+                    sanitize: false,
+                    smartLists: true,
+                    smartypants: false,
+                    highlight: function(code) {
+                        return hljs.highlightAuto(code).value;
+                    }
+                });
+
+                $(".md").click(function() {
+                    name = $(this).text();
+                    openDocument(name);
+                });
+
+                function openDocument(name) {
+                    $.get(name, function(data, status) {
+                        $("#content").html(marked(data));
+                        $("#tree").ztree_toc({});
+                    });
                 }
             });
-
-            $(".md").click(function() {
-                name = $(this).text();
-                openDocument(name);
-            });
-
-            function openDocument(name) {
-                $.get(name, function(data, status) {
-                    $("#content").html(marked(data));
-                });
-            }
         </script>
     </body>
 </html>

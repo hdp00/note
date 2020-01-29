@@ -214,8 +214,9 @@ function factor(opts ,count,current) {
 	}
 
 	$.fn.ztree_toc = function(options) {
-
-
+		$.fn.ztree_toc.defaults._headers = [];
+		$.fn.ztree_toc.defaults._header_offsets = [];
+		$.fn.ztree_toc.defaults._header_nodes = [{ id:1, pId:0, name:"Table of Content",open:true}];
 
 		// 将defaults 和 options 参数合并到{}
 		var opts = $.extend({},$.fn.ztree_toc.defaults,options);
