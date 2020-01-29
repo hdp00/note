@@ -214,8 +214,11 @@ function factor(opts ,count,current) {
 	}
 
 	$.fn.ztree_toc = function(options) {
+
+
+
 		// 将defaults 和 options 参数合并到{}
-		var opts = $.extend({},_defaults,options);
+		var opts = $.extend({},$.fn.ztree_toc.defaults,options);
 
 		return this.each(function() {
 			opts._zTree = $(this);
