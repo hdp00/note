@@ -92,6 +92,10 @@ server {
     location = /50x.html {
         root   /usr/share/nginx/html;
     }
+
+    location ~ .*\.(htm|html)$ {
+        expires off;    #关闭缓存
+    }
 }
 
 ```
@@ -138,3 +142,29 @@ curl https://www.baidu.com
 //如果网络是通过http代理服务器出去的，而代理服务器需要用户名和密码，那么输入：
 curl -U proxyuser:proxypassword http://www.baidu.com
 ```
+
+## 一些指令
+``` sh
+#查看python进程
+ps aux |grep python
+
+#scp
+#上传下载文件
+scp /path/filename username@servername:/path/
+scp username@servername:/path/filename /var/www/local_dir
+#上传下载目录
+scp -r username@servername:/var/www/remote_dir/（远程目录） /var/www/local_dir（本地目录）
+scp -r local_dir username@servername:remote_dir
+
+#查看nginx网络状态
+netstat  -anptu |grep nginx
+```
+
+
+
+
+
+
+
+
+

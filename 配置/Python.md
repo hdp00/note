@@ -9,6 +9,7 @@
 > - 生成数据库定义 ```python manage.py makemigrations books```
 > - 生成数据库 ```python manage.py migrate```
 > - 创建管理员 ```python manage.py createsuperuser```
+> - 收集静态文件 ```python manage.py collectstatic```
 
 ### settings.py
 ```
