@@ -1,28 +1,30 @@
-### 命令
-``` bash
-apt install docker.io 		#安装
+###Command
 
-docker search []			#查找镜像
-docker pull []				#下载镜像
-docker images				#镜像列表
-docker rmi []				#删除镜像
+docker | hint
+-|-
+apt install docker.io 		|安装
+docker search []			    |查找镜像
+docker pull []				    |下载镜像
+docker images				      |镜像列表
+docker rmi []				      |删除镜像
+docker run -it [] bash 		|创建并运行 [-it进入终端,--name 设定容器名称,-v 绑定一个卷]
+docker exec -it [] bash		|进入容器，退出时不会停止容器
+docker start []				    |运行容器
+docker stop []				    |停止容器
+docker rm []				      |删除容器
+docker ps -a				      |显示所有容器
+docker stats				      |容器运行状态
 
-docker run -it [] bash 		#创建并运行
-#[-it进入终端,--name 设定容器名称,-v 绑定一个卷]
-docker exec -it [] bash		#进入容器，退出时不会停止容器
-docker start []				#运行容器
-docker stop []				#停止容器
-docker rm []				#删除容器
-docker ps -a				#显示所有容器
+dock-compose | hint
+-|-
+docker-compose ps     |列出所有运行容器
+docker-compose logs   |查看服务日志输出
+docker-compose start  |启动
+docker-compose stop   |停止
+docker-compose rm     |删除
+docker-compose up -d  |构建&启动 [-d 始终运行]
 
-docker stats				#容器运行状态
-
-docker-compose up			#创建并运行
-docker-compose start		#运行
-docker-compose stop         #停止
-```
-
-### 免sudo
+#### 免sudo
 ```
 sudo groupadd docker
 sudo gpasswd -a [user] docker
@@ -35,8 +37,6 @@ version: "2"
 services:
   db:
     image: mysql:5.6
-    # volumes:
-    #  - $PWD/db:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
@@ -69,3 +69,43 @@ volumes:
   wordpress:
   mysql:
 ```
+
+```yaml
+version: '2'
+
+services:
+  db:
+    image: mariadb
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --skip-innodb-read-only-compressed
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=user
+    volumes:
+      - mysql:/var/lib/mysql
+
+  app:  
+    image: nextcloud
+    restart: always
+    ports:
+      - 8003:80
+    links:
+      - db  
+    environment:
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=user
+      - MYSQL_HOST=db
+    
+    volumes:
+      - nextcloud:/var/www/html
+
+volumes:
+  nextcloud:
+  mysql:
+```
+
+
+
