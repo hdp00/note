@@ -16,8 +16,16 @@ name ALL=(ALL:ALL) ALL
 ```
 //创建秘钥
 ssh-keygen
-//将公钥拷贝到服务端
-ssh-copy-id [-i identity_file] [-p port] user@remotehost
+//将公钥添加到系统
+cd /home/[user]/.ssh
+cat [key].pub >> authorized_keys 
+
+关闭ssh密码登录
+修改配置文件/etc/ssh/sshd_config
+PasswordAuthentication no
+//重启
+service sshd restart
+
 
 ```
 ```
@@ -158,6 +166,12 @@ scp -r local_dir username@servername:remote_dir
 
 #查看nginx网络状态
 netstat  -anptu |grep nginx
+
+修改用户组
+如果要修改该目录下所有文件和目录，使用-R参数。
+chgrp -R [group] [file]
+修改文件所有者
+chown [user] [file]
 ```
 
 

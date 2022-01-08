@@ -1,21 +1,29 @@
-###Command
-
-docker | hint
+### linux
+linux | 说明
 -|-
 apt install docker.io 		|安装
+systemctl enable docker   |自启动
+sudo groupadd docker<br>sudo gpasswd -a [user] docker | 免sudo
+
+### docker
+docker | 说明
+-|-
 docker search []			    |查找镜像
 docker pull []				    |下载镜像
 docker images				      |镜像列表
 docker rmi []				      |删除镜像
-docker run -it [] bash 		|创建并运行 [-it进入终端,--name 设定容器名称,-v 绑定一个卷]
-docker exec -it [] bash		|进入容器，退出时不会停止容器
+docker run -it [] bash 		|创建并运行<br>[-it进入终端,--name 设定容器名称,-v 绑定一个卷]
+docker exec -it [] bash		|进入容器，退出时不会停止容器<br>[-u user 以user用户进入]
 docker start []				    |运行容器
 docker stop []				    |停止容器
 docker rm []				      |删除容器
 docker ps -a				      |显示所有容器
 docker stats				      |容器运行状态
+docker cp [docker_id]:[docker_file] [system_dir] | 从容器拷贝文件
+docker cp [system_file] [docker_id]:[docker_dir]  | 从系统拷贝文件
 
-dock-compose | hint
+### docker-compose
+dock-compose | 说明
 -|-
 docker-compose ps     |列出所有运行容器
 docker-compose logs   |查看服务日志输出
@@ -23,12 +31,6 @@ docker-compose start  |启动
 docker-compose stop   |停止
 docker-compose rm     |删除
 docker-compose up -d  |构建&启动 [-d 始终运行]
-
-#### 免sudo
-```
-sudo groupadd docker
-sudo gpasswd -a [user] docker
-```
 
 ### docker-compose.yml示例
 ```yaml
@@ -84,7 +86,7 @@ services:
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=user
     volumes:
-      - mysql:/var/lib/mysql
+      - /home/user/mysql:/var/lib/mysql
 
   app:  
     image: nextcloud
@@ -98,14 +100,7 @@ services:
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=user
       - MYSQL_HOST=db
-    
     volumes:
-      - nextcloud:/var/www/html
+      - /home/user/nextcloud:/var/www/html
 
-volumes:
-  nextcloud:
-  mysql:
 ```
-
-
-

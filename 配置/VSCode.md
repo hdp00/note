@@ -31,13 +31,6 @@ settings.json
 "python.pythonPath": "D:\\Anaconda3\\envs\\test\\python.exe"
 ```
 
-### Sync
-```
-github vscode_sync tokens
-5e4223ea2bda79306336bff91ec48d7211fb9ae9
-vscode setting_sync
-cbd6ceb4b179735d5ec9155f71faef96
-```
 
 ### 设置字体
 ```
