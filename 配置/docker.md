@@ -31,6 +31,7 @@ docker-compose start  |启动
 docker-compose stop   |停止
 docker-compose rm     |删除
 docker-compose up -d  |构建&启动 [-d 始终运行]
+docker-compose down   |关闭&删除
 
 ### docker-compose.yml示例
 ```yaml
