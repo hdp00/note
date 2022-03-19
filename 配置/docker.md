@@ -32,6 +32,55 @@ docker-compose stop   |停止
 docker-compose rm     |删除
 docker-compose up -d  |构建&启动 [-d 始终运行]
 
+### dockerfile示例
+```shell
+# django环境，可通过ssh连接
+# by hdp 2022.03.19
+FROM ubuntu:22.04
+
+WORKDIR /root
+
+COPY acer4741SSH.pub .ssh/authorized_keys
+COPY Miniconda3-py39_4.11.0-Linux-x86_64.sh ./
+
+# 安装软件
+RUN apt update \  
+    && apt install openssh-server -y \
+    && apt install nano \
+    && apt install git -y \
+    # 文件权限和配置
+    && chmod 600 .ssh/authorized_keys \
+    && chmod 700 .ssh \
+    && echo "PasswordAuthentication no" >> /etc/ssh/ssh_config \
+    && echo "PubkeyAuthentication yes" >> /etc/ssh/ssh_config 
+
+# miniconda
+RUN bash Miniconda3-py39_4.11.0-Linux-x86_64.sh -b \   
+    && rm -f Miniconda3-py39_4.11.0-Linux-x86_64.sh
+
+ENV PATH="/root/miniconda3/bin:$PATH"
+RUN conda init bash \
+    && . ~/.bashrc \
+    # 启动环境
+    && echo "conda activate django" >> ~/.bashrc \
+    && conda create -n django -y \
+    && conda activate django \
+    && conda install django -y
+
+# 清理
+RUN apt purge -y --auto-remove \
+    && rm -rf /var/lib/apt/lists/* 
+
+RUN mkdir config
+COPY start_service.sh ./config
+
+VOLUME [ "/root/code", "/root/.vscode-server" ]
+
+EXPOSE 22 8000
+
+ENTRYPOINT [ "/root/config/start_service.sh" ]
+```
+
 ### docker-compose.yml示例
 ```yaml
 version: "2"
