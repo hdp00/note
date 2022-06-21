@@ -21,6 +21,9 @@ docker ps -a				      |显示所有容器
 docker stats				      |容器运行状态
 docker cp [docker_id]:[docker_file] [system_dir] | 从容器拷贝文件
 docker cp [system_file] [docker_id]:[docker_dir]  | 从系统拷贝文件
+docker build -t [image:tag] . |构建镜像
+docker system df          |查看硬盘
+docker system prune       |清理硬盘
 
 ### docker-compose
 dock-compose | 说明
