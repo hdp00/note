@@ -4,7 +4,7 @@
 * 配置
   * [Anaconda](配置/Anaconda)
   * [docker](配置/docker)
-  * [git](配置/git)
+  * [Git](配置/Git)
   * [javascript](配置/javascript)
   * [Linux](配置/Linux)
   * [npm](配置/npm)
