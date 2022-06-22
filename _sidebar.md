@@ -1,0 +1,18 @@
+* [首页](/)
+* 记录
+  * [Acer4741搭建服务器](记录/Acer4741搭建服务器)
+* 配置
+  * [Anaconda](配置/Anaconda)
+  * [docker](配置/docker)
+  * [git](配置/git)
+  * [javascript](配置/javascript)
+  * [Linux](配置/Linux)
+  * [npm](配置/npm)
+  * [pycharm](配置/pycharm)
+  * [Python](配置/Python)
+  * [VSCode](配置/VSCode)
+* 软件
+  * [Win10](软件/Win10)
+* 摘要
+  * [Qt](摘要/Qt)
+  * [Ubuntu开机启动](摘要/Ubuntu开机启动)

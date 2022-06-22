@@ -1,147 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Note</title>
-
-        <style>
-            code {
-                color: #a9b7c6;
-                background: #282b2e;
-                display: block;
-                overflow-x: auto;
-                padding: 0.5em;
-            }
-
-            .container {
-                width: 100%;
-                height: 100vh;
-                background-color: beige;
-            }
-            .left {
-                width: 200px;
-                float: left;
-                height: 100%;
-                background-color: burlywood;
-                overflow: auto;
-                position: fixed;
-            }
-            .right {
-                height: 100%;
-                margin-left: 200px;
-                /* background-color: aquamarine; */
-            }
-        </style>
-
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/androidstudio.min.css"
-        />
-        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
-
-        <link rel="stylesheet" href="html/zTreeStyle.css" />
-        <style>
-            body {
-                background-color: white;
-                margin: 0;
-                padding: 0;
-                text-align: left;
-            }
-            div,
-            p,
-            table,
-            th,
-            td {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                color: #333;
-                font-size: 12px;
-                font-family: dotum, Verdana, Arial, Helvetica, AppleGothic,
-                    sans-serif;
-            }
-            .ztree li a.curSelectedNode {
-                padding-top: 0px;
-                background-color: #ffe6b0;
-                color: black;
-                height: 16px;
-                border: 1px #ffb951 solid;
-                opacity: 0.8;
-            }
-        </style>
-
-        <script src="https://cdn.bootcdn.net/ajax/libs/marked/3.0.8/marked.js"></script>
-        <script src="https://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
-        <script src="html/jquery.ztree.core-3.5.min.js"></script>
-        <script src="html/ztree_toc.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <div class="left">
-                <a href="javascript:void(0)" class="md">readme.md</a><br />
-                <a href="javascript:void(0)" class="md">配置/docker.md</a><br />
-                <a href="javascript:void(0)" class="md">配置/javascript.md</a>
-                <br />
-                <a href="javascript:void(0)" class="md">配置/Linux.md</a><br />
-                <a href="javascript:void(0)" class="md">配置/npm.md</a><br />
-                <a href="javascript:void(0)" class="md">配置/pycharm.md</a>
-                <br />
-                <a href="javascript:void(0)" class="md">配置/Python.md</a><br />
-                <a href="javascript:void(0)" class="md">配置/VSCode.md</a><br />
-                <a href="javascript:void(0)" class="md">摘要/Qt.md</a><br />
-                <a href="javascript:void(0)" class="md">
-                    摘要/Ubuntu开机启动.md</a
-                ><br />
-            </div>
-            <div class="right">
-                <table border="0" height="600px" align="left">
-                    <tr>
-                        <td
-                            width="260px"
-                            align="left"
-                            valign="top"
-                            style="BORDER-RIGHT: #999999 1px dashed"
-                        >
-                            <ul id="tree" class="ztree"></ul>
-                        </td>
-                        <td width="770px" align="left" valign="top">
-                            <div id="content" class="first_part"></div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
-        <script>
-            $(function() {
-                marked.setOptions({
-                    renderer: new marked.Renderer(),
-                    gfm: true,
-                    tables: true,
-                    breaks: false,
-                    pedantic: false,
-                    sanitize: false,
-                    smartLists: true,
-                    smartypants: false,
-                    highlight: function(code) {
-                        return hljs.highlightAuto(code).value;
-                    }
-                });
-
-                $(".md").click(function() {
-                    name = $(this).text();
-                    openDocument(name);
-                });
-
-                function openDocument(name) {
-                    $.get(name, function(data, status) {
-                        $("#content").html(marked(data));
-                        $("#tree").ztree_toc({});
-                    });
-                }
-            });
-        </script>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+</head>
+<body>
+  <div id="app">loading</div>
+  <script>
+    window.$docsify = {
+      name: '',
+      repo: '',
+      loadSidebar: true,
+      //subMaxLevel: 2,
+      name: "hdp's note"
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+</body>
 </html>
