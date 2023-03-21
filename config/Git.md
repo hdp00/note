@@ -1,6 +1,8 @@
 # Git
 
 ## command
+> 新建纯版本库 `git init --bare`
+> 创建远程分支 `git remote add origin [username]@[address]:~/gitRepository/gitProject.git`
 > 本地分支链接远程分支 `git branch -u origin/name`
 
 ## Ubuntu新连接到Github
