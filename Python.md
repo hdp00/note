@@ -45,7 +45,7 @@ python.pythonpath python.venvpath
 ```
 //command
 pip install yapf
-//settings.json
+<//settings.json>
 {
     "python.formatting.provider": "yapf",//配置
     //格式设置
@@ -139,4 +139,3 @@ sudo apt-get insatll python3-pyqt5
 ```
 
 ---
-by hdp 2019.12.20

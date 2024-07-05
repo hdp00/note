@@ -1,0 +1,10 @@
+{
+    "title": "记录",
+    "plugins": [
+        "highlight"
+    ],
+    "theme": "classic",
+    "themeConfig": {
+        "defaultMode": "dark"
+    }
+}

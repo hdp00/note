@@ -11,7 +11,7 @@ npm uninstall <Module Name>
 //更新模块
 npm update <Module Name>
 
-//package.json
+<//package.json>
 //生成
 npm init
 //重新安装

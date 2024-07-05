@@ -1,11 +1,13 @@
-### linux
+### install
+
 linux | 说明
 -|-
 apt install docker.io 		|安装
 systemctl enable docker   |自启动
 sudo groupadd docker<br>sudo gpasswd -a [user] docker | 免sudo
 
-### docker
+### command
+
 docker | 说明
 -|-
 docker search []			    |查找镜像
