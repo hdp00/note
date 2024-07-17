@@ -1,4 +1,3 @@
-[TOC]
 
 # Linux配置
 
@@ -26,17 +25,13 @@ PasswordAuthentication no
 //重启
 service sshd restart
 
-
-```
-```
 之后需要配置.ssh/config
 Host 别名
     Hostname 主机名
     Port 端口
     User 用户名
     IdentityFile ./sshFile
-```
-```
+
 //登录
 ssh username@192.168.1.103
 or
@@ -174,7 +169,17 @@ chgrp -R [group] [file]
 chown [user] [file]
 ```
 
+## VMware
+``` bash
+# vm tools
+sudo apt update
+sudo apt install open-vm-tools-desktop
 
+### 设置虚拟机共享文件夹
+sudo mkdir /mnt/hgfs
+vmware-hgfsclient #获取共享文件夹名称
+sudo vmhgfs-fuse .host:/[共享文件夹名称] /mnt/hgfs -o allow_other
+```
 
 
 
