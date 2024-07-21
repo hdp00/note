@@ -181,6 +181,18 @@ vmware-hgfsclient #获取共享文件夹名称
 sudo vmhgfs-fuse .host:/[共享文件夹名称] /mnt/hgfs -o allow_other
 ```
 
+## V2RayA
+```bash
+#install
+wget -qO - https://apt.v2raya.org/key/public-key.asc | sudo tee /etc/apt/keyrings/v2raya.asc
+echo "deb [signed-by=/etc/apt/keyrings/v2raya.asc] https://apt.v2raya.org/ v2raya main" | sudo tee /etc/apt/sources.list.d/v2raya.list
+sudo apt update
+sudo apt install v2raya v2ray ## 也可以使用 xray 包
+# start
+sudo systemctl start v2raya.service
+# power on start
+sudo systemctl enable v2raya.service
+```
 
 
 
