@@ -1,4 +1,3 @@
-# Git
 
 ## command
 > 新建纯版本库 `git init --bare`
@@ -24,3 +23,10 @@
 - 校验秘钥是否能正常连接github
 
     `ssh -vT git@github.com`
+    `ssh -T git@[address] -p [port] -i [privateSSH]`
+
+```bash
+# 生成PPK私钥
+sudo apt install putty-tools
+puttygen keyname -o keyname.ppk
+```
