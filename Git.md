@@ -3,6 +3,8 @@
 > 新建纯版本库 `git init --bare`
 > 创建远程分支 `git remote add origin [username]@[address]:~/gitRepository/gitProject.git`
 > 本地分支链接远程分支 `git branch -u origin/[branch]`
+> 从svn clone `git svn clone [svnRemote]`
+> 合并两个分支 `git pull [remote] [branch] --allow-unrelated-histories`
 
 ## Ubuntu新连接到Github
 
