@@ -192,6 +192,8 @@ sudo apt install v2raya v2ray ## 也可以使用 xray 包
 sudo systemctl start v2raya.service
 # power on start
 sudo systemctl enable v2raya.service
+# 设置界面
+http://localhost:2017
 ```
 
 
